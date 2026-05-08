@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <i class="fa-solid fa-utensils text-primary"></i>
+      Recetario
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/recipes"><i class="fa-solid fa-book-open me-1"></i> Explorar Recetas</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav align-items-center">
+        <% if (user) { %>
+          <li class="nav-item me-3">
+            <a class="btn btn-custom-primary btn-sm" href="/recipes/new">
+              <i class="fa-solid fa-plus me-1"></i> Nueva Receta
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; color: var(--primary-color);">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <span class="fw-bold"><%= user.name %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end mt-2">
+              <li><a class="dropdown-item" href="/auth/logout"><i class="fa-solid fa-right-from-bracket me-2 text-danger"></i> Cerrar Sesión</a></li>
+            </ul>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="/auth/login">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="btn btn-custom-primary" href="/auth/register">Registrarse</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

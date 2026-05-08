@@ -1,0 +1,50 @@
+<div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="col-md-7 col-lg-6">
+    <div class="card auth-card">
+      <div class="auth-header" style="background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));">
+        <div class="mb-3">
+          <i class="fa-solid fa-user-plus" style="font-size: 3.5rem; opacity: 0.9;"></i>
+        </div>
+        <h2>Únete a la Comunidad</h2>
+        <p class="mb-0 mt-2" style="color: rgba(255,255,255,0.8);">Crea tu cuenta en segundos y empieza a cocinar.</p>
+      </div>
+      <div class="card-body p-5">
+        
+        <% if (error) { %>
+          <div class="alert alert-danger border-0 shadow-sm rounded-3 d-flex align-items-center mb-4">
+            <i class="fa-solid fa-circle-exclamation me-3 fs-5"></i>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <form action="/auth/register" method="POST">
+          <div class="mb-4">
+            <label for="name" class="form-label text-muted"><i class="fa-solid fa-user me-2"></i>Nombre Completo</label>
+            <input type="text" class="form-control custom-form-control py-3" id="name" name="name" placeholder="Ej. Juan Pérez" required>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="form-label text-muted"><i class="fa-solid fa-envelope me-2"></i>Correo Electrónico</label>
+            <input type="email" class="form-control custom-form-control py-3" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-6 mb-4 mb-md-0">
+              <label for="password" class="form-label text-muted"><i class="fa-solid fa-lock me-2"></i>Contraseña</label>
+              <input type="password" class="form-control custom-form-control py-3" id="password" name="password" placeholder="Mínimo 6 caracteres" required minlength="6">
+            </div>
+            <div class="col-md-6">
+              <label for="confirmPassword" class="form-label text-muted"><i class="fa-solid fa-check-double me-2"></i>Confirmar Contraseña</label>
+              <input type="password" class="form-control custom-form-control py-3" id="confirmPassword" name="confirmPassword" placeholder="Repite la contraseña" required minlength="6">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom-secondary w-100 py-3 fs-5 mb-4 shadow-lg text-white">
+            Crear Cuenta <i class="fa-solid fa-paper-plane ms-2"></i>
+          </button>
+        </form>
+        
+        <div class="text-center mt-2 border-top pt-4">
+          <p class="text-muted mb-0">¿Ya eres parte de la familia? <a href="/auth/login" class="text-decoration-none fw-bold" style="color: var(--primary-color);">Inicia sesión</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

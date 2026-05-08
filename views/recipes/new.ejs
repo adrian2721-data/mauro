@@ -1,0 +1,74 @@
+<div class="row justify-content-center my-5">
+  <div class="col-md-8 col-lg-7">
+    
+    <div class="text-center mb-5">
+      <div class="d-inline-block bg-white p-4 rounded-circle shadow-sm mb-3">
+        <i class="fa-solid fa-pen-nib fs-1" style="color: var(--primary-color);"></i>
+      </div>
+      <h2 class="fw-bold display-6">Crear Nueva Receta</h2>
+      <p class="text-muted">Comparte tu creación culinaria con el mundo.</p>
+    </div>
+    
+    <div class="card auth-card">
+      <div class="card-body p-5">
+        
+        <% if (typeof error !== 'undefined' && error) { %>
+          <div class="alert alert-danger border-0 shadow-sm rounded-3 d-flex align-items-center mb-4">
+            <i class="fa-solid fa-circle-exclamation me-3 fs-4"></i>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <form action="/recipes" method="POST" enctype="multipart/form-data">
+          <div class="mb-4">
+            <label for="title" class="form-label"><i class="fa-solid fa-heading text-primary me-2"></i> Título de la Receta</label>
+            <input type="text" class="form-control custom-form-control" id="title" name="title" placeholder="Ej: Tarta de Manzana" required>
+          </div>
+          
+          <div class="mb-4">
+            <label for="image" class="form-label"><i class="fa-solid fa-image text-danger me-2"></i> Imagen de la Receta</label>
+            <input type="file" class="form-control custom-form-control" id="image" name="image" accept="image/*">
+            <div class="form-text mt-2"><i class="fa-solid fa-circle-info me-1"></i> Opcional. Formatos aceptados: JPG, PNG, GIF (Máx. 5MB).</div>
+          </div>
+          
+          <div class="mb-4">
+            <label for="category" class="form-label"><i class="fa-solid fa-tags text-secondary me-2"></i> Categoría</label>
+            <select class="form-select custom-form-control cursor-pointer" id="category" name="category" required>
+              <option value="Desayuno">Desayuno</option>
+              <option value="Almuerzo">Almuerzo</option>
+              <option value="Cena">Cena</option>
+              <option value="Postre">Postre</option>
+              <option value="Bebida">Bebida</option>
+              <option value="Otro" selected>Otro</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="description" class="form-label"><i class="fa-solid fa-quote-left text-info me-2"></i> Breve Descripción</label>
+            <textarea class="form-control custom-form-control" id="description" name="description" rows="2" placeholder="Un resumen apetitoso de tu receta..." required></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label for="ingredients" class="form-label"><i class="fa-solid fa-carrot text-success me-2"></i> Ingredientes</label>
+            <textarea class="form-control custom-form-control" id="ingredients" name="ingredients" rows="4" placeholder="1 taza de harina&#10;2 huevos&#10;Media taza de azúcar..." required></textarea>
+            <div class="form-text mt-2"><i class="fa-solid fa-circle-info me-1"></i> Separados por coma o salto de línea</div>
+          </div>
+
+          <div class="mb-5">
+            <label for="instructions" class="form-label"><i class="fa-solid fa-list-ol text-warning me-2"></i> Instrucciones de Preparación</label>
+            <textarea class="form-control custom-form-control" id="instructions" name="instructions" rows="6" placeholder="Paso 1: Precalentar el horno...&#10;Paso 2: Mezclar los ingredientes secos..." required></textarea>
+          </div>
+
+          <div class="d-flex gap-3 pt-3 border-top">
+            <button type="submit" class="btn btn-custom-primary flex-grow-1 py-3 fs-5">
+              <i class="fa-solid fa-save me-2"></i> Publicar Receta
+            </button>
+            <a href="/recipes" class="btn btn-light border py-3 px-4 fs-5 text-muted hover-bg-light" style="border-radius: 12px;">
+              Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
